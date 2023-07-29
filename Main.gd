@@ -13,10 +13,12 @@ static var screen_origin : Vector2
 func _ready():
 	var win := get_window()
 	screen_origin = win.position
-	win.position -= start_pos
+	win.position += start_pos
 	win.size = start_size
 	win.canvas_cull_mask = 1
 
 func _process(delta):
+	if get_window().mode != Window.MODE_WINDOWED:
+		get_window().mode = Window.MODE_WINDOWED
 	var newpos : Vector2 = get_window().position
 	camera.position = newpos - screen_origin

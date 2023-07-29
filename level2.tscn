@@ -319,6 +319,7 @@ unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
+mouse_passthrough = true
 script = ExtResource("9_k24ty")
 track = NodePath("../Player")
 layer = 2
@@ -327,6 +328,8 @@ layer = 2
 anchor_mode = 0
 
 [node name="GoalWindow" type="Window" parent="."]
+initial_position = 1
+size = Vector2i(1280, 720)
 script = ExtResource("7_1qvpd")
 start_pos = Vector2i(1100, 0)
 start_size = Vector2i(180, 720)

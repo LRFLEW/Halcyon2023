@@ -7,13 +7,14 @@ extends Window
 
 func _ready():
 	close_requested.connect(handle_close)
-	var root := get_tree().get_root()
-	world_2d = root.world_2d
-	position = root.position + start_pos
+	world_2d = get_tree().get_root().world_2d
+	position += start_pos
 	size = start_size
 	canvas_cull_mask = 1
 
 func _process(delta):
+	if mode != Window.MODE_WINDOWED:
+		mode = Window.MODE_WINDOWED
 	camera.position = Vector2(position) - Main.screen_origin
 
 func handle_close():

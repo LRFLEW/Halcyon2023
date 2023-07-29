@@ -356,6 +356,7 @@ unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
+mouse_passthrough = true
 script = ExtResource("5_m7r4a")
 track = NodePath("../Box")
 
@@ -387,6 +388,7 @@ unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
+mouse_passthrough = true
 script = ExtResource("5_m7r4a")
 track = NodePath("../Player")
 layer = 2
