@@ -13,8 +13,9 @@ static var screen_origin : Vector2
 var completed := false
 var timer := 0.0
 
-@onready var camera := $Camera2D
-@onready var confetti := $Confetti
+@onready var camera : Camera2D = $Camera2D
+@onready var confetti : CPUParticles2D = $Confetti
+@onready var winsound : AudioStreamPlayer = $WinSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,3 +53,4 @@ func level_complete():
 	if !completed:
 		completed = true
 		confetti.restart()
+		winsound.play()

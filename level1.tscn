@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d2enwkcg38xfm"]
+[gd_scene load_steps=31 format=3 uid="uid://d2enwkcg38xfm"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_v41gg"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_4jr6d"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="10_dxts4"]
 [ext_resource type="Script" path="res://Player.gd" id="10_u70n7"]
 [ext_resource type="Script" path="res://Goal.gd" id="12_57yxo"]
+[ext_resource type="AudioStream" uid="uid://cf6iryiu7ip81" path="res://confirmation_002.ogg" id="12_fatax"]
 [ext_resource type="Script" path="res://Hint.gd" id="13_7pq1d"]
 [ext_resource type="Texture2D" uid="uid://7yewaju4wb8i" path="res://arrow_horizontal.png" id="13_gl7bg"]
 
@@ -292,6 +293,9 @@ scale_amount_min = 4.0
 scale_amount_max = 4.0
 color_ramp = SubResource("Gradient_88ml6")
 color_initial_ramp = SubResource("Gradient_627en")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_fatax")
 
 [node name="GoalArea" type="Area2D" parent="."]
 collision_layer = 2

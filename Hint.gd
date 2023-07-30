@@ -4,7 +4,7 @@ var enabled := false
 var win_good := true
 var win_last : Rect2i
 
-@onready var anim := $Arrow/AnimationPlayer
+@onready var anim : AnimationPlayer = $Arrow/AnimationPlayer
 
 func _process(delta):
 	var win := get_window()

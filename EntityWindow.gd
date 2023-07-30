@@ -3,7 +3,7 @@ extends Window
 @export var track : Node2D
 @export var layer := 1
 
-@onready var camera := $Camera2D
+@onready var camera : Camera2D = $Camera2D
 
 func _ready():
 	world_2d = get_tree().get_root().world_2d

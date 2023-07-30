@@ -3,7 +3,7 @@ extends Window
 @export var start_pos := Vector2i(0, 0)
 #@export var start_size := Vector2i(1280, 720)
 
-@onready var camera := $Camera2D
+@onready var camera : Camera2D = $Camera2D
 
 func _ready():
 	var screen := Rect2i(

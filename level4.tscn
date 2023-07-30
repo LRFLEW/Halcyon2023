@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cypx431wqu307"]
+[gd_scene load_steps=27 format=3 uid="uid://cypx431wqu307"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_b7c0u"]
 [ext_resource type="Texture2D" uid="uid://cvbwbh58kc5rg" path="res://arrow_cross.png" id="3_dnrfh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="5_8xvb8"]
 [ext_resource type="Script" path="res://EntityWindow.gd" id="6_fty4n"]
 [ext_resource type="Script" path="res://Goal.gd" id="8_4dvd2"]
+[ext_resource type="AudioStream" uid="uid://cf6iryiu7ip81" path="res://confirmation_002.ogg" id="8_y2y2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyb8e"]
 size = Vector2(1512, 144)
@@ -70,7 +71,7 @@ start_pos = Vector2i(0, 396)
 start_size = Vector2i(360, 360)
 unresizable = true
 next_level = "res://Victory.tscn"
-completion_timer = 3.0
+completion_timer = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -235,6 +236,9 @@ scale_amount_min = 4.0
 scale_amount_max = 4.0
 color_ramp = SubResource("Gradient_agbyn")
 color_initial_ramp = SubResource("Gradient_lfh8r")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_y2y2i")
 
 [node name="GoalArea" type="Area2D" parent="."]
 collision_layer = 2
