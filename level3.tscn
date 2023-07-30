@@ -1,11 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://mt5o6aihuyhk"]
+[gd_scene load_steps=19 format=3 uid="uid://mt5o6aihuyhk"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_eug2c"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_fiexn"]
 [ext_resource type="TileSet" uid="uid://codqxp3pqyrh8" path="res://LevelTileset.tres" id="3_spp65"]
-[ext_resource type="Script" path="res://Player.gd" id="4_aj11d"]
-[ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="5_nbxb2"]
-[ext_resource type="Script" path="res://EntityWindow.gd" id="6_dikt5"]
+[ext_resource type="PackedScene" uid="uid://cagdfcj2kex1f" path="res://Player.tscn" id="4_hxymb"]
 [ext_resource type="Script" path="res://SecondaryWindow.gd" id="7_5uf3r"]
 [ext_resource type="AudioStream" uid="uid://cf6iryiu7ip81" path="res://confirmation_002.ogg" id="8_2mbut"]
 [ext_resource type="Script" path="res://Goal.gd" id="8_y82gg"]
@@ -30,9 +28,6 @@ size = Vector2(216, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3usce"]
 size = Vector2(108, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmq"]
-size = Vector2(52, 66)
 
 [sub_resource type="Gradient" id="Gradient_agbyn"]
 offsets = PackedFloat32Array(0, 0.8, 1)
@@ -144,38 +139,8 @@ shape = SubResource("RectangleShape2D_xhcki")
 position = Vector2(1170, 468)
 shape = SubResource("RectangleShape2D_3usce")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-visibility_layer = 4
-position = Vector2(82, 194)
-collision_layer = 2
-collision_mask = 3
-script = ExtResource("4_aj11d")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-visibility_layer = 4
-position = Vector2(48, 48)
-texture = ExtResource("5_nbxb2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visibility_layer = 4
-position = Vector2(48, 63)
-shape = SubResource("RectangleShape2D_7xxmq")
-
-[node name="PlayerWindow" type="Window" parent="." node_paths=PackedStringArray("track")]
-transparent_bg = true
-gui_embed_subwindows = true
-size = Vector2i(96, 96)
-unresizable = true
-borderless = true
-always_on_top = true
-transparent = true
-mouse_passthrough = true
-script = ExtResource("6_dikt5")
-track = NodePath("../Player")
-layer = 2
-
-[node name="Camera2D" type="Camera2D" parent="PlayerWindow"]
-anchor_mode = 0
+[node name="Player" parent="." instance=ExtResource("4_hxymb")]
+position = Vector2(78, 188)
 
 [node name="GoalWindow" type="Window" parent="."]
 position = Vector2i(936, 36)

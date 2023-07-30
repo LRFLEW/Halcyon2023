@@ -1,16 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://d2enwkcg38xfm"]
+[gd_scene load_steps=29 format=3 uid="uid://d2enwkcg38xfm"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_v41gg"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_4jr6d"]
 [ext_resource type="TileSet" uid="uid://codqxp3pqyrh8" path="res://LevelTileset.tres" id="3_4kt5i"]
 [ext_resource type="Texture2D" uid="uid://byukghqwmy20h" path="res://platformPack_tile064.png" id="3_du6rs"]
 [ext_resource type="Script" path="res://ToggleWall.gd" id="4_csvuv"]
-[ext_resource type="Texture2D" uid="uid://bqbmewb8rtfby" path="res://icon.svg" id="4_rwcq5"]
 [ext_resource type="Script" path="res://Button.gd" id="5_lb8hk"]
 [ext_resource type="Script" path="res://EntityWindow.gd" id="5_m7r4a"]
 [ext_resource type="Texture2D" uid="uid://b7mt5b2qp7lle" path="res://platformPack_tile065.png" id="6_mkain"]
-[ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="10_dxts4"]
-[ext_resource type="Script" path="res://Player.gd" id="10_u70n7"]
+[ext_resource type="Texture2D" uid="uid://bepdq6muljl4k" path="res://Box.png" id="8_eok6k"]
+[ext_resource type="PackedScene" uid="uid://cagdfcj2kex1f" path="res://Player.tscn" id="10_s4n6h"]
 [ext_resource type="Script" path="res://Goal.gd" id="12_57yxo"]
 [ext_resource type="AudioStream" uid="uid://cf6iryiu7ip81" path="res://confirmation_002.ogg" id="12_fatax"]
 [ext_resource type="Script" path="res://Hint.gd" id="13_7pq1d"]
@@ -52,10 +51,7 @@ friction = 5.0
 rough = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebecx"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmq"]
-size = Vector2(52, 66)
+size = Vector2(72, 72)
 
 [sub_resource type="Gradient" id="Gradient_88ml6"]
 offsets = PackedFloat32Array(0, 0.8, 1)
@@ -214,7 +210,7 @@ shape = SubResource("RectangleShape2D_u8yhe")
 
 [node name="Box" type="RigidBody2D" parent="."]
 visibility_layer = 2
-position = Vector2(462, 584)
+position = Vector2(458, 576)
 collision_layer = 4
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_ivpw0")
@@ -222,19 +218,18 @@ lock_rotation = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Box"]
 visibility_layer = 2
-position = Vector2(32, 32)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_rwcq5")
+texture = ExtResource("8_eok6k")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
 visibility_layer = 2
-position = Vector2(32, 32)
+position = Vector2(36, 36)
 shape = SubResource("RectangleShape2D_ebecx")
 
 [node name="BoxWindow" type="Window" parent="." node_paths=PackedStringArray("track")]
 transparent_bg = true
 gui_embed_subwindows = true
-size = Vector2i(64, 64)
+size = Vector2i(72, 72)
 unresizable = true
 borderless = true
 always_on_top = true
@@ -246,38 +241,8 @@ track = NodePath("../Box")
 [node name="Camera2D" type="Camera2D" parent="BoxWindow"]
 anchor_mode = 0
 
-[node name="Player" type="CharacterBody2D" parent="."]
-visibility_layer = 4
-position = Vector2(118, 551)
-collision_layer = 2
-collision_mask = 7
-script = ExtResource("10_u70n7")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-visibility_layer = 4
-position = Vector2(48, 48)
-texture = ExtResource("10_dxts4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-visibility_layer = 4
-position = Vector2(48, 63)
-shape = SubResource("RectangleShape2D_7xxmq")
-
-[node name="PlayerWindow" type="Window" parent="." node_paths=PackedStringArray("track")]
-transparent_bg = true
-gui_embed_subwindows = true
-size = Vector2i(96, 96)
-unresizable = true
-borderless = true
-always_on_top = true
-transparent = true
-mouse_passthrough = true
-script = ExtResource("5_m7r4a")
-track = NodePath("../Player")
-layer = 2
-
-[node name="Camera2D" type="Camera2D" parent="PlayerWindow"]
-anchor_mode = 0
+[node name="Player" parent="." instance=ExtResource("10_s4n6h")]
+position = Vector2(114, 548)
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
 position = Vector2(1152, 572)

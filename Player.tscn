@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cagdfcj2kex1f"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ood0y"]
+[ext_resource type="Texture2D" uid="uid://dvkvyc0wykegw" path="res://frame_00001.png" id="3_m4kre"]
+[ext_resource type="Script" path="res://EntityWindow.gd" id="3_s6qeo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmq"]
+size = Vector2(44, 64)
+
+[node name="Player" type="CharacterBody2D"]
+visibility_layer = 4
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_ood0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 4
+texture = ExtResource("3_m4kre")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 4
+position = Vector2(46, 68)
+shape = SubResource("RectangleShape2D_7xxmq")
+
+[node name="PlayerWindow" type="Window" parent="." node_paths=PackedStringArray("track")]
+transparent_bg = true
+gui_embed_subwindows = true
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+mouse_passthrough = true
+script = ExtResource("3_s6qeo")
+track = NodePath("..")
+layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="PlayerWindow"]
+visible = false
+visibility_layer = 4
+anchor_mode = 0
