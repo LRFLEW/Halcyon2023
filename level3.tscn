@@ -238,6 +238,7 @@ visibility_layer = 7
 texture_filter = 1
 script = ExtResource("1_eug2c")
 start_size = Vector2i(360, 360)
+next_level = "res://Level4.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -365,6 +366,7 @@ anchor_mode = 0
 [node name="GoalWindow" type="Window" parent="."]
 position = Vector2i(936, 36)
 size = Vector2i(360, 360)
+visible = false
 script = ExtResource("7_5uf3r")
 start_pos = Vector2i(936, 0)
 
@@ -406,4 +408,6 @@ position = Vector2(1170, 234)
 shape = SubResource("RectangleShape2D_un5xk")
 
 [connection signal="body_entered" from="GoalAreaMain" to="GoalAreaMain" method="triggered"]
+[connection signal="level_complete" from="GoalAreaMain" to="." method="level_complete"]
 [connection signal="body_entered" from="GoalAreaGoal" to="GoalAreaGoal" method="triggered"]
+[connection signal="level_complete" from="GoalAreaGoal" to="." method="level_complete"]

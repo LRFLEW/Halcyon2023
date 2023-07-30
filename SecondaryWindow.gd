@@ -6,7 +6,9 @@ extends Window
 @onready var camera := $Camera2D
 
 func _ready():
-	var screen := Rect2i(DisplayServer.screen_get_position(), DisplayServer.screen_get_size())
+	var screen := Rect2i(
+		DisplayServer.screen_get_position(Menu.game_display),
+		DisplayServer.screen_get_size(Menu.game_display))
 	var root := screen.get_center() - Vector2i(1280 / 2, 720 / 2)
 	
 	visible = true

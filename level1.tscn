@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d2enwkcg38xfm"]
+[gd_scene load_steps=32 format=3 uid="uid://d2enwkcg38xfm"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_v41gg"]
 [ext_resource type="Texture2D" uid="uid://d00k6feddp4u3" path="res://tilemap_packed.png" id="2_xiqyd"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="10_dxts4"]
 [ext_resource type="Script" path="res://Player.gd" id="10_u70n7"]
 [ext_resource type="Script" path="res://Goal.gd" id="12_57yxo"]
+[ext_resource type="Script" path="res://Hint.gd" id="13_7pq1d"]
+[ext_resource type="Texture2D" uid="uid://7yewaju4wb8i" path="res://arrow_horizontal.png" id="13_gl7bg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jrahe"]
 texture = ExtResource("2_xiqyd")
@@ -254,10 +256,77 @@ colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oagaf"]
 size = Vector2(36, 108)
 
+[sub_resource type="Animation" id="Animation_p3y3l"]
+resource_name = "Hint"
+length = 2.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.75, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.25, 2.5),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Vector2(-32, 328), Vector2(-32, 328), Vector2(328, 328), Vector2(328, 328)]
+}
+
+[sub_resource type="Animation" id="Animation_dbyyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, 328)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j52ui"]
+_data = {
+"Hint": SubResource("Animation_p3y3l"),
+"RESET": SubResource("Animation_dbyyy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b18ur"]
+size = Vector2(144, 576)
+
 [node name="Node2D" type="Node2D"]
-visibility_layer = 7
+visibility_layer = 15
 texture_filter = 1
 script = ExtResource("1_v41gg")
+next_level = "res://Level2.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -423,8 +492,51 @@ script = ExtResource("12_57yxo")
 position = Vector2(1170, 594)
 shape = SubResource("RectangleShape2D_oagaf")
 
+[node name="Hint" type="Area2D" parent="."]
+visibility_layer = 8
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("13_7pq1d")
+
+[node name="Arrow" type="Sprite2D" parent="Hint"]
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+visibility_layer = 8
+position = Vector2(-32, 328)
+texture = ExtResource("13_gl7bg")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hint/Arrow"]
+libraries = {
+"": SubResource("AnimationLibrary_j52ui")
+}
+
+[node name="HintWindow" type="Window" parent="Hint" node_paths=PackedStringArray("track")]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(64, 64)
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+mouse_passthrough = true
+script = ExtResource("5_m7r4a")
+track = NodePath("../Arrow")
+layer = 3
+
+[node name="Camera2D" type="Camera2D" parent="Hint/HintWindow"]
+anchor_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hint"]
+position = Vector2(900, 360)
+shape = SubResource("RectangleShape2D_b18ur")
+
 [connection signal="body_entered" from="Button" to="Button" method="on_body"]
 [connection signal="body_exited" from="Button" to="Button" method="on_body"]
 [connection signal="button_state" from="Button" to="WallA" method="update_pressed"]
 [connection signal="button_state" from="Button" to="WallB" method="update_pressed"]
+[connection signal="button_state" from="Button" to="Hint" method="set_enabled"]
 [connection signal="body_entered" from="GoalArea" to="GoalArea" method="triggered"]
+[connection signal="level_complete" from="GoalArea" to="." method="level_complete"]
+[connection signal="body_entered" from="Hint" to="Hint" method="on_player_enter"]
+[connection signal="body_exited" from="Hint" to="Hint" method="on_player_exit"]

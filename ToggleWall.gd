@@ -15,4 +15,3 @@ func update_pressed(pressed : bool):
 func _ready():
 	super()
 	_set_state(default_state)
-
