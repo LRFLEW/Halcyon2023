@@ -11,8 +11,10 @@ var originals : Dictionary
 func _ready():
 	for owner_id in get_shape_owners():
 		var pos : Vector2 = shape_owner_get_owner(owner_id).global_position
-		var size : Vector2 = shape_owner_get_shape(owner_id, 0).size
-		originals[owner_id] = Rect2(pos - size / 2.0, size)
+		var shape := shape_owner_get_shape(owner_id, 0)
+		shape_owner_remove_shape(owner_id, 0)
+		shape_owner_add_shape(owner_id, shape.duplicate(true))
+		originals[owner_id] = Rect2(pos - shape.size / 2.0, shape.size)
 
 func _physics_process(delta):
 	for owner_id in get_shape_owners():

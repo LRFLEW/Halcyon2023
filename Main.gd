@@ -14,6 +14,7 @@ func _ready():
 	var win := get_window()
 	var screen := Rect2i(DisplayServer.screen_get_position(), DisplayServer.screen_get_size())
 	var root := screen.get_center() - Vector2i(1280 / 2, 720 / 2)
+	print(root)
 	
 	screen_origin = root
 	win.position = root + start_pos
@@ -25,3 +26,7 @@ func _process(delta):
 		get_window().mode = Window.MODE_WINDOWED
 	var newpos : Vector2 = get_window().position
 	camera.position = newpos - screen_origin
+
+func _input(event):
+	if event.is_action_pressed("Restart"):
+		get_tree().reload_current_scene()

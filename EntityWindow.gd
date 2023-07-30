@@ -12,3 +12,7 @@ func _ready():
 func _process(delta):
 	camera.position = track.position
 	position = track.position + Main.screen_origin
+
+func _input(event):
+	if event.is_action_pressed("Restart"):
+		get_tree().reload_current_scene()

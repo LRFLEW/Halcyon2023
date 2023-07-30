@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://u5ni4wmsvgra"]
+[gd_scene load_steps=19 format=3 uid="uid://u5ni4wmsvgra"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_2omb3"]
 [ext_resource type="Texture2D" uid="uid://d00k6feddp4u3" path="res://tilemap_packed.png" id="2_kgjn8"]
@@ -201,31 +201,10 @@ sources/0 = SubResource("TileSetAtlasSource_jrahe")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyb8e"]
 size = Vector2(1512, 180)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u65qt"]
-size = Vector2(1512, 180)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w61gj"]
 size = Vector2(180, 576)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvjke"]
-size = Vector2(180, 576)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4b0h"]
-size = Vector2(144, 575)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntn4e"]
-size = Vector2(1512, 180)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2asml"]
-size = Vector2(1512, 180)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m616h"]
-size = Vector2(180, 576)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjmmb"]
-size = Vector2(180, 576)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y50ex"]
 size = Vector2(144, 575)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmq"]
@@ -270,7 +249,7 @@ shape = SubResource("RectangleShape2D_uyb8e")
 
 [node name="Top" type="CollisionShape2D" parent="MainCollision"]
 position = Vector2(648, -18)
-shape = SubResource("RectangleShape2D_u65qt")
+shape = SubResource("RectangleShape2D_uyb8e")
 
 [node name="Left" type="CollisionShape2D" parent="MainCollision"]
 position = Vector2(-18, 360)
@@ -278,7 +257,7 @@ shape = SubResource("RectangleShape2D_w61gj")
 
 [node name="Right" type="CollisionShape2D" parent="MainCollision"]
 position = Vector2(1314, 360)
-shape = SubResource("RectangleShape2D_hvjke")
+shape = SubResource("RectangleShape2D_w61gj")
 
 [node name="Middle" type="CollisionShape2D" parent="MainCollision"]
 position = Vector2(648, 360)
@@ -291,23 +270,23 @@ window = NodePath("../GoalWindow")
 
 [node name="Bottom" type="CollisionShape2D" parent="GoalCollision"]
 position = Vector2(648, 738)
-shape = SubResource("RectangleShape2D_ntn4e")
+shape = SubResource("RectangleShape2D_uyb8e")
 
 [node name="Top" type="CollisionShape2D" parent="GoalCollision"]
 position = Vector2(648, -18)
-shape = SubResource("RectangleShape2D_2asml")
+shape = SubResource("RectangleShape2D_uyb8e")
 
 [node name="Left" type="CollisionShape2D" parent="GoalCollision"]
 position = Vector2(-18, 360)
-shape = SubResource("RectangleShape2D_m616h")
+shape = SubResource("RectangleShape2D_w61gj")
 
 [node name="Right" type="CollisionShape2D" parent="GoalCollision"]
 position = Vector2(1314, 360)
-shape = SubResource("RectangleShape2D_bjmmb")
+shape = SubResource("RectangleShape2D_w61gj")
 
 [node name="Middle" type="CollisionShape2D" parent="GoalCollision"]
 position = Vector2(648, 360)
-shape = SubResource("RectangleShape2D_y50ex")
+shape = SubResource("RectangleShape2D_h4b0h")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 visibility_layer = 4
@@ -343,7 +322,7 @@ layer = 2
 anchor_mode = 0
 
 [node name="GoalWindow" type="Window" parent="."]
-position = Vector2i(1100, 0)
+position = Vector2i(1100, 36)
 size = Vector2i(180, 720)
 script = ExtResource("7_1qvpd")
 
