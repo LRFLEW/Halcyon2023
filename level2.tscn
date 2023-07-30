@@ -311,7 +311,7 @@ shape = SubResource("RectangleShape2D_y50ex")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 visibility_layer = 4
-position = Vector2(82, 543)
+position = Vector2(82, 551)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("10_3vctf")
