@@ -36,7 +36,9 @@ func _process(delta):
 		get_window().mode = Window.MODE_WINDOWED
 	var newpos : Vector2 = get_window().position
 	camera.position = newpos - screen_origin
-	
+
+func _physics_process(delta):
+	Menu.game_timer += delta
 	if completed:
 		timer += delta
 		if timer >= completion_timer:

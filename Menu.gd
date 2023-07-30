@@ -3,6 +3,7 @@ extends Node2D
 class_name Menu
 
 static var game_display := -1
+static var game_timer := 0.0
 
 const screen_size := Vector2i(1280, 720)
 
@@ -27,6 +28,7 @@ func _input(event):
 
 func play():
 	game_display = DisplayServer.window_get_current_screen(get_window().get_window_id())
+	game_timer = 0.0
 	get_tree().change_scene_to_file(first_level)
 
 func quit():

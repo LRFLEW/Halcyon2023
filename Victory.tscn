@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://n0my54kni238"]
+
+[ext_resource type="Script" path="res://Victory.gd" id="1_rbo3v"]
+[ext_resource type="Script" path="res://Player.gd" id="2_c14w7"]
+[ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="3_5c6vc"]
+[ext_resource type="Script" path="res://EntityWindow.gd" id="4_wr2ap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3qco"]
+size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f61tb"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb1pd"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2kgm"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4vyt"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch8m7"]
+size = Vector2(52, 66)
+
+[node name="Victory" type="Node2D"]
+visibility_layer = 7
+script = ExtResource("1_rbo3v")
+menu_scene = "res://Menu.tscn"
+
+[node name="Congratulations" type="Label" parent="."]
+offset_right = 1280.0
+offset_bottom = 135.0
+theme_override_font_sizes/font_size = 128
+text = "Congratulations"
+horizontal_alignment = 1
+
+[node name="Complete" type="Label" parent="."]
+offset_top = 228.0
+offset_right = 1280.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 96
+text = "You completed the game"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+offset_top = 356.0
+offset_right = 1280.0
+offset_bottom = 491.0
+theme_override_font_sizes/font_size = 96
+text = "in XX.XX seconds"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="."]
+offset_left = 465.0
+offset_top = 531.0
+offset_right = 825.0
+offset_bottom = 675.0
+theme_override_font_sizes/font_size = 96
+text = "Menu"
+
+[node name="WindowBox" type="StaticBody2D" parent="."]
+position = Vector2(640, 360)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WindowBox"]
+shape = SubResource("RectangleShape2D_d3qco")
+
+[node name="ScreenBox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBox"]
+shape = SubResource("RectangleShape2D_f61tb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScreenBox"]
+shape = SubResource("RectangleShape2D_mb1pd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScreenBox"]
+shape = SubResource("RectangleShape2D_m2kgm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ScreenBox"]
+shape = SubResource("RectangleShape2D_g4vyt")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+visibility_layer = 4
+position = Vector2(592, -128)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("2_c14w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+visibility_layer = 4
+position = Vector2(48, 48)
+texture = ExtResource("3_5c6vc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visibility_layer = 4
+position = Vector2(48, 63)
+shape = SubResource("RectangleShape2D_ch8m7")
+
+[node name="PlayerWindow" type="Window" parent="." node_paths=PackedStringArray("track")]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(96, 96)
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+mouse_passthrough = true
+script = ExtResource("4_wr2ap")
+track = NodePath("../Player")
+layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="PlayerWindow"]
+anchor_mode = 0
+
+[connection signal="pressed" from="Play" to="." method="menu"]

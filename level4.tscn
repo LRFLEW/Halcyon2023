@@ -251,14 +251,14 @@ colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_un5xk"]
 size = Vector2(36, 108)
 
-[node name="Node2D" type="Node2D"]
+[node name="Level4" type="Node2D"]
 visibility_layer = 7
 texture_filter = 1
 script = ExtResource("1_b7c0u")
 start_pos = Vector2i(0, 396)
 start_size = Vector2i(360, 360)
 unresizable = true
-next_level = "res://Menu.tscn"
+next_level = "res://Victory.tscn"
 completion_timer = 3.0
 
 [node name="TileMap" type="TileMap" parent="."]

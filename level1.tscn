@@ -322,7 +322,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18ur"]
 size = Vector2(144, 576)
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 visibility_layer = 15
 texture_filter = 1
 script = ExtResource("1_v41gg")

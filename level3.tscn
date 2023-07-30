@@ -233,7 +233,7 @@ colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_un5xk"]
 size = Vector2(36, 108)
 
-[node name="Node2D" type="Node2D"]
+[node name="Level3" type="Node2D"]
 visibility_layer = 7
 texture_filter = 1
 script = ExtResource("1_eug2c")
