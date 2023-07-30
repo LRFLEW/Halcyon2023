@@ -1,12 +1,16 @@
-extends StaticBody2D
+extends Area2D
 
-class_name CropCollision
+class_name Goal
+
+signal level_complete
 
 @export var window : Window
 
 var originals : Dictionary
+var completed := false
 
 @onready var win : Window = window if window else get_window()
+@onready var confetti := $"../Confetti"
 
 func _ready():
 	for owner_id in get_shape_owners():
@@ -21,3 +25,9 @@ func _physics_process(delta):
 		var res := col.intersection(wrect)
 		shape_owner_get_shape(owner_id, 0).size = res.size
 		shape_owner_get_owner(owner_id).global_position = res.get_center()
+
+func triggered(body : Node2D):
+	if !completed:
+		completed = true
+		confetti.restart()
+		level_complete.emit()

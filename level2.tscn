@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://u5ni4wmsvgra"]
+[gd_scene load_steps=25 format=3 uid="uid://u5ni4wmsvgra"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_2omb3"]
 [ext_resource type="Texture2D" uid="uid://d00k6feddp4u3" path="res://tilemap_packed.png" id="2_kgjn8"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="4_rjrwv"]
 [ext_resource type="Script" path="res://SecondaryWindow.gd" id="7_1qvpd"]
+[ext_resource type="Script" path="res://Goal.gd" id="8_cgoed"]
 [ext_resource type="Script" path="res://EntityWindow.gd" id="9_k24ty"]
 [ext_resource type="Script" path="res://Player.gd" id="10_3vctf"]
 [ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="11_8ggj1"]
@@ -230,6 +231,17 @@ size = Vector2(144, 575)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xxmq"]
 size = Vector2(52, 66)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un5xk"]
+size = Vector2(36, 108)
+
+[sub_resource type="Gradient" id="Gradient_agbyn"]
+offsets = PackedFloat32Array(0, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_lfh8r"]
+offsets = PackedFloat32Array(0, 0.333, 0.666, 1)
+colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 1, 0.25, 0.25, 1)
+
 [node name="Node2D" type="Node2D"]
 visibility_layer = 7
 texture_filter = 1
@@ -328,11 +340,35 @@ layer = 2
 anchor_mode = 0
 
 [node name="GoalWindow" type="Window" parent="."]
-initial_position = 1
-size = Vector2i(1280, 720)
+position = Vector2i(1100, 0)
+size = Vector2i(180, 720)
 script = ExtResource("7_1qvpd")
-start_pos = Vector2i(1100, 0)
-start_size = Vector2i(180, 720)
 
 [node name="Camera2D" type="Camera2D" parent="GoalWindow"]
 anchor_mode = 0
+
+[node name="GoalArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("8_cgoed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
+position = Vector2(1170, 594)
+shape = SubResource("RectangleShape2D_un5xk")
+
+[node name="Confetti" type="CPUParticles2D" parent="GoalArea"]
+position = Vector2(1170, 539)
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 30.0
+initial_velocity_min = 320.0
+initial_velocity_max = 480.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_agbyn")
+color_initial_ramp = SubResource("Gradient_lfh8r")
+
+[connection signal="body_entered" from="GoalArea" to="GoalArea" method="triggered"]
