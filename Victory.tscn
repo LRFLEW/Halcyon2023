@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://n0my54kni238"]
+[gd_scene load_steps=12 format=3 uid="uid://n0my54kni238"]
 
 [ext_resource type="Script" path="res://Victory.gd" id="1_rbo3v"]
+[ext_resource type="FontFile" uid="uid://dxganxrvafv3u" path="res://Tektur-Medium.ttf" id="2_1jvf5"]
 [ext_resource type="Script" path="res://Player.gd" id="2_c14w7"]
 [ext_resource type="Texture2D" uid="uid://28oppi20cfjc" path="res://platformChar_idle.png" id="3_5c6vc"]
 [ext_resource type="Script" path="res://EntityWindow.gd" id="4_wr2ap"]
@@ -31,6 +32,7 @@ menu_scene = "res://Menu.tscn"
 [node name="Congratulations" type="Label" parent="."]
 offset_right = 1280.0
 offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_1jvf5")
 theme_override_font_sizes/font_size = 128
 text = "Congratulations"
 horizontal_alignment = 1
@@ -39,6 +41,7 @@ horizontal_alignment = 1
 offset_top = 228.0
 offset_right = 1280.0
 offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("2_1jvf5")
 theme_override_font_sizes/font_size = 96
 text = "You completed the game"
 horizontal_alignment = 1
@@ -47,6 +50,7 @@ horizontal_alignment = 1
 offset_top = 356.0
 offset_right = 1280.0
 offset_bottom = 491.0
+theme_override_fonts/font = ExtResource("2_1jvf5")
 theme_override_font_sizes/font_size = 96
 text = "in XX.XX seconds"
 horizontal_alignment = 1
@@ -56,6 +60,7 @@ offset_left = 465.0
 offset_top = 531.0
 offset_right = 825.0
 offset_bottom = 675.0
+theme_override_fonts/font = ExtResource("2_1jvf5")
 theme_override_font_sizes/font_size = 96
 text = "Menu"
 
