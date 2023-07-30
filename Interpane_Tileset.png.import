@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d00k6feddp4u3"
-path="res://.godot/imported/tilemap_packed.png-7b301e6705a57389d2cd02d385b33920.ctex"
+uid="uid://c3t53wilvj4av"
+path="res://.godot/imported/Interpane_Tileset.png-f2913beeb9dcad445ae43e91dd8b4146.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap_packed.png"
-dest_files=["res://.godot/imported/tilemap_packed.png-7b301e6705a57389d2cd02d385b33920.ctex"]
+source_file="res://Interpane_Tileset.png"
+dest_files=["res://.godot/imported/Interpane_Tileset.png-f2913beeb9dcad445ae43e91dd8b4146.ctex"]
 
 [params]
 
