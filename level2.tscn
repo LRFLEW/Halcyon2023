@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://u5ni4wmsvgra"]
+[gd_scene load_steps=18 format=3 uid="uid://u5ni4wmsvgra"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_2omb3"]
 [ext_resource type="Texture2D" uid="uid://d00k6feddp4u3" path="res://tilemap_packed.png" id="2_kgjn8"]
@@ -221,9 +221,6 @@ colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_un5xk"]
 size = Vector2(36, 108)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q74i6"]
-size = Vector2(36, 108)
-
 [node name="Node2D" type="Node2D"]
 visibility_layer = 7
 texture_filter = 1
@@ -322,9 +319,10 @@ layer = 2
 anchor_mode = 0
 
 [node name="GoalWindow" type="Window" parent="."]
-position = Vector2i(1100, 36)
+position = Vector2i(1100, 0)
 size = Vector2i(180, 720)
 script = ExtResource("7_1qvpd")
+start_pos = Vector2i(1100, 0)
 
 [node name="Camera2D" type="Camera2D" parent="GoalWindow"]
 anchor_mode = 0
@@ -361,7 +359,7 @@ window = NodePath("../GoalWindow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalAreaGoal"]
 position = Vector2(1170, 594)
-shape = SubResource("RectangleShape2D_q74i6")
+shape = SubResource("RectangleShape2D_un5xk")
 
 [connection signal="body_entered" from="GoalAreaMain" to="GoalAreaMain" method="triggered"]
 [connection signal="body_entered" from="GoalAreaGoal" to="GoalAreaGoal" method="triggered"]

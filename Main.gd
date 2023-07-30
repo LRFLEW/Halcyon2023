@@ -6,6 +6,7 @@ static var screen_origin : Vector2
 
 @export var start_pos := Vector2i(0, 0)
 @export var start_size := Vector2i(1280, 720)
+@export var unresizable := false
 
 @onready var camera := $Camera2D
 
@@ -14,11 +15,11 @@ func _ready():
 	var win := get_window()
 	var screen := Rect2i(DisplayServer.screen_get_position(), DisplayServer.screen_get_size())
 	var root := screen.get_center() - Vector2i(1280 / 2, 720 / 2)
-	print(root)
 	
 	screen_origin = root
 	win.position = root + start_pos
 	win.size = start_size
+	win.unresizable = unresizable
 	win.canvas_cull_mask = 1
 
 func _process(delta):

@@ -8,7 +8,6 @@ extends Window
 func _ready():
 	var screen := Rect2i(DisplayServer.screen_get_position(), DisplayServer.screen_get_size())
 	var root := screen.get_center() - Vector2i(1280 / 2, 720 / 2)
-	print(root)
 	
 	visible = true
 	close_requested.connect(handle_close)
