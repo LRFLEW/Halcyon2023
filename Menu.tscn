@@ -59,7 +59,7 @@ first_level = "res://Level1.tscn"
 [node name="AnimatedBG" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xs3en")
 autoplay = "default"
-frame_progress = 0.899043
+frame_progress = 0.145705
 centered = false
 
 [node name="Title" type="Label" parent="."]

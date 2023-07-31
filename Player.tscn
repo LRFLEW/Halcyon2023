@@ -191,7 +191,7 @@ visibility_layer = 4
 sprite_frames = SubResource("SpriteFrames_3y22p")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.0992562
+frame_progress = 0.686112
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -7,7 +7,7 @@ const JUMP_VELOCITY := -550.0
 const WORLD_END := 800.0
 const END_DECEL := 60.0
 
-@export var do_respawn := true
+@export var is_victory := false
 @export var respawn_timer := 0.6
 @export var hshift := 4.0
 @export var footstep_time := 0.33
@@ -22,7 +22,7 @@ var controllable := true
 @onready var footsteps : AudioStreamPlayer = $Footsteps
 
 func _physics_process(delta):
-	if controllable and do_respawn and position.y > WORLD_END:
+	if controllable and !is_victory and position.y > WORLD_END:
 		timer += delta
 		if timer >= respawn_timer:
 			get_tree().reload_current_scene()
@@ -56,7 +56,13 @@ func _physics_process(delta):
 					ft_timer = 0.0
 					footsteps.play()
 			else:
-				if sprite.animation != "JumpLand" and sprite.animation != "Idle":
+				if is_victory and Input.is_action_just_pressed("Dance"):
+					if sprite.animation != "Victory":
+						sprite.play("Victory")
+					else:
+						sprite.play("Idle")
+				elif sprite.animation != "JumpLand" and sprite.animation != "Idle" \
+						and sprite.animation != "Victory":
 					if sprite.animation.begins_with("Jump"):
 						sprite.play("JumpLand")
 					else:
