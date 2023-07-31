@@ -8,6 +8,7 @@ const screen_pad := 200.0
 var title : String = ProjectSettings.get_setting("application/config/name")
 
 @onready var overfx : AudioStreamPlayer = $OverFX
+@onready var clickfx : AudioStreamPlayer = $ClickFX
 @onready var music_bus := AudioServer.get_bus_index("Music")
 @onready var sfx_bus := AudioServer.get_bus_index("SFX")
 @onready var winbox : StaticBody2D = $WindowBox
@@ -84,5 +85,10 @@ func change_sfx_volume(value : float):
 	AudioServer.set_bus_volume_db(sfx_bus, value)
 	AudioServer.set_bus_mute(sfx_bus, value <= -30.0)
 
-func menu():
+func do_menu():
 	get_tree().change_scene_to_file(menu_scene)
+
+func menu():
+	if clickfx.finished.get_connections().is_empty():
+		clickfx.finished.connect(do_menu)
+		clickfx.play()

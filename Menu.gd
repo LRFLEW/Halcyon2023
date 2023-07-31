@@ -12,6 +12,7 @@ const screen_size := Vector2i(1280, 720)
 var title : String = ProjectSettings.get_setting("application/config/name")
 
 @onready var overfx : AudioStreamPlayer = $OverFX
+@onready var clickfx : AudioStreamPlayer = $ClickFX
 @onready var music_bus := AudioServer.get_bus_index("Music")
 @onready var sfx_bus := AudioServer.get_bus_index("SFX")
 
@@ -45,10 +46,20 @@ func change_sfx_volume(value : float):
 	AudioServer.set_bus_volume_db(sfx_bus, value)
 	AudioServer.set_bus_mute(sfx_bus, value <= -30.0)
 
-func play():
+func do_play():
 	game_display = DisplayServer.window_get_current_screen(get_window().get_window_id())
 	game_timer = 0.0
 	get_tree().change_scene_to_file(first_level)
 
-func quit():
+func play():
+	if clickfx.finished.get_connections().is_empty():
+		clickfx.finished.connect(do_play)
+		clickfx.play()
+
+func do_quit():
 	get_tree().quit()
+
+func quit():
+	if clickfx.finished.get_connections().is_empty():
+		clickfx.finished.connect(do_quit)
+		clickfx.play()

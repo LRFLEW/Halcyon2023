@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://n0my54kni238"]
+[gd_scene load_steps=14 format=3 uid="uid://n0my54kni238"]
 
 [ext_resource type="Script" path="res://Victory.gd" id="1_rbo3v"]
 [ext_resource type="FontFile" uid="uid://dxganxrvafv3u" path="res://Tektur-Medium.ttf" id="2_1jvf5"]
 [ext_resource type="PackedScene" uid="uid://cagdfcj2kex1f" path="res://Player.tscn" id="3_3musq"]
 [ext_resource type="AudioStream" uid="uid://b1q3yoi54ltg8" path="res://click4.ogg" id="3_tjy2f"]
+[ext_resource type="AudioStream" uid="uid://23mubqsqyq1f" path="res://click3.ogg" id="4_eh1ei"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvtva"]
 content_margin_top = 8.0
@@ -87,7 +88,11 @@ text = "Menu"
 
 [node name="OverFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_tjy2f")
-volume_db = -3.0
+bus = &"SFX"
+
+[node name="ClickFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eh1ei")
+volume_db = 6.0
 bus = &"SFX"
 
 [node name="MusicLabel" type="Label" parent="."]
