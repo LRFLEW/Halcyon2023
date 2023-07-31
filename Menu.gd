@@ -11,6 +11,8 @@ const screen_size := Vector2i(1280, 720)
 
 var title : String = ProjectSettings.get_setting("application/config/name")
 
+@onready var overfx : AudioStreamPlayer = $OverFX
+
 func _ready():
 	var win := get_window()
 	var screen := Rect2i(DisplayServer.screen_get_position(), DisplayServer.screen_get_size())
@@ -25,6 +27,9 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("Restart"):
 		get_tree().reload_current_scene()
+
+func on_mouse_over():
+	overfx.play()
 
 func play():
 	game_display = DisplayServer.window_get_current_screen(get_window().get_window_id())

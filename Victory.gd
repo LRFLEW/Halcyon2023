@@ -7,6 +7,7 @@ const screen_pad := 200.0
 
 var title : String = ProjectSettings.get_setting("application/config/name")
 
+@onready var overfx : AudioStreamPlayer = $OverFX
 @onready var winbox : StaticBody2D = $WindowBox
 @onready var scrnbox : StaticBody2D = $ScreenBox
 
@@ -30,10 +31,8 @@ func _ready():
 	winbox.shape_owner_add_shape(boxid, boxshape.duplicate(true))
 	
 	var visscreen : Rect2 = DisplayServer.screen_get_usable_rect(Menu.game_display)
-	print (visscreen)
 	var viscenter := visscreen.get_center()
 	var scrnids := scrnbox.get_shape_owners()
-	print(scrnids)
 	for i in 4:
 		var obj := scrnbox.shape_owner_get_owner(scrnids[i])
 		var shape := scrnbox.shape_owner_get_shape(scrnids[i], 0)
@@ -67,6 +66,9 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("Restart"):
 		get_tree().reload_current_scene()
+
+func on_mouse_over():
+	overfx.play()
 
 func menu():
 	get_tree().change_scene_to_file(menu_scene)
