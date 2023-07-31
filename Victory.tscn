@@ -83,5 +83,6 @@ shape = SubResource("RectangleShape2D_g4vyt")
 
 [node name="Player" parent="." instance=ExtResource("3_3musq")]
 position = Vector2(588, -132)
+do_respawn = false
 
 [connection signal="pressed" from="Play" to="." method="menu"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d2enwkcg38xfm"]
+[gd_scene load_steps=31 format=3 uid="uid://d2enwkcg38xfm"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_v41gg"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_4jr6d"]
@@ -9,11 +9,13 @@
 [ext_resource type="Script" path="res://EntityWindow.gd" id="5_m7r4a"]
 [ext_resource type="Texture2D" uid="uid://b7mt5b2qp7lle" path="res://platformPack_tile065.png" id="6_mkain"]
 [ext_resource type="Texture2D" uid="uid://bepdq6muljl4k" path="res://Box.png" id="8_eok6k"]
+[ext_resource type="AudioStream" uid="uid://18kxn06rbasx" path="res://switch7.ogg" id="9_80urc"]
 [ext_resource type="PackedScene" uid="uid://cagdfcj2kex1f" path="res://Player.tscn" id="10_s4n6h"]
 [ext_resource type="Script" path="res://Goal.gd" id="12_57yxo"]
 [ext_resource type="AudioStream" uid="uid://cf6iryiu7ip81" path="res://confirmation_002.ogg" id="12_fatax"]
 [ext_resource type="Script" path="res://Hint.gd" id="13_7pq1d"]
 [ext_resource type="Texture2D" uid="uid://7yewaju4wb8i" path="res://arrow_horizontal.png" id="13_gl7bg"]
+[ext_resource type="AudioStream" uid="uid://bbx2swuao8eub" path="res://switch6.ogg" id="13_odctu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pesk"]
 size = Vector2(72, 576)
@@ -128,7 +130,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b18ur"]
-size = Vector2(144, 576)
+size = Vector2(112, 576)
 
 [node name="Level1" type="Node2D"]
 visibility_layer = 15
@@ -207,6 +209,14 @@ animation = &"Unpressed"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_u8yhe")
+
+[node name="PressSound" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("13_odctu")
+volume_db = -3.0
+
+[node name="DepressSound" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("9_80urc")
+volume_db = -3.0
 
 [node name="Box" type="RigidBody2D" parent="."]
 visibility_layer = 2
@@ -307,7 +317,7 @@ layer = 3
 anchor_mode = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hint"]
-position = Vector2(900, 360)
+position = Vector2(916, 360)
 shape = SubResource("RectangleShape2D_b18ur")
 
 [connection signal="body_entered" from="Button" to="Button" method="on_body"]
