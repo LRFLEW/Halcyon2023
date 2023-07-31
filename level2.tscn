@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://u5ni4wmsvgra"]
+[gd_scene load_steps=14 format=3 uid="uid://u5ni4wmsvgra"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_2omb3"]
 [ext_resource type="TileSet" uid="uid://codqxp3pqyrh8" path="res://LevelTileset.tres" id="3_c82cn"]
@@ -26,10 +26,7 @@ offsets = PackedFloat32Array(0, 0.333, 0.666, 1)
 colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 1, 0.25, 0.25, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4konl"]
-size = Vector2(72, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdvs8"]
-size = Vector2(72, 72)
+size = Vector2(72, 90)
 
 [node name="Level2" type="Node2D"]
 visibility_layer = 7
@@ -109,7 +106,7 @@ start_pos = Vector2i(1064, 0)
 anchor_mode = 0
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
-position = Vector2(1152, 572)
+position = Vector2(1152, 555)
 emitting = false
 amount = 32
 one_shot = true
@@ -132,7 +129,7 @@ collision_mask = 2
 script = ExtResource("8_cgoed")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalAreaMain"]
-position = Vector2(1152, 612)
+position = Vector2(1152, 603)
 shape = SubResource("RectangleShape2D_4konl")
 
 [node name="GoalAreaGoal" type="Area2D" parent="." node_paths=PackedStringArray("window")]
@@ -142,8 +139,8 @@ script = ExtResource("8_cgoed")
 window = NodePath("../GoalWindow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalAreaGoal"]
-position = Vector2(1152, 612)
-shape = SubResource("RectangleShape2D_qdvs8")
+position = Vector2(1152, 603)
+shape = SubResource("RectangleShape2D_4konl")
 
 [connection signal="body_entered" from="GoalAreaMain" to="GoalAreaMain" method="triggered"]
 [connection signal="level_complete" from="GoalAreaMain" to="." method="level_complete"]

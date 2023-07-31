@@ -64,7 +64,7 @@ offsets = PackedFloat32Array(0, 0.333, 0.666, 1)
 colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 1, 0.25, 0.25, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oagaf"]
-size = Vector2(72, 72)
+size = Vector2(72, 90)
 
 [sub_resource type="Animation" id="Animation_p3y3l"]
 resource_name = "Hint"
@@ -255,7 +255,7 @@ anchor_mode = 0
 position = Vector2(114, 548)
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
-position = Vector2(1152, 572)
+position = Vector2(1152, 555)
 emitting = false
 amount = 32
 one_shot = true
@@ -278,7 +278,7 @@ collision_mask = 2
 script = ExtResource("12_57yxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
-position = Vector2(1152, 612)
+position = Vector2(1152, 603)
 shape = SubResource("RectangleShape2D_oagaf")
 
 [node name="Hint" type="Area2D" parent="."]

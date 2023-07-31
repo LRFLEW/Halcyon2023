@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED := 350.0
-const JUMP_VELOCITY := -500.0
+const JUMP_VELOCITY := -550.0
 const WORLD_END := 800.0
 
 @export var do_respawn := true

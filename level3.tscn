@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://mt5o6aihuyhk"]
+[gd_scene load_steps=18 format=3 uid="uid://mt5o6aihuyhk"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_eug2c"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_fiexn"]
@@ -38,10 +38,7 @@ offsets = PackedFloat32Array(0, 0.333, 0.666, 1)
 colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 1, 0.25, 0.25, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2xi3"]
-size = Vector2(72, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyrgb"]
-size = Vector2(72, 72)
+size = Vector2(72, 90)
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 7
@@ -153,7 +150,7 @@ start_pos = Vector2i(936, 0)
 anchor_mode = 0
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
-position = Vector2(1152, 212)
+position = Vector2(1152, 195)
 emitting = false
 amount = 32
 one_shot = true
@@ -176,7 +173,7 @@ collision_mask = 2
 script = ExtResource("8_y82gg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalAreaMain"]
-position = Vector2(1152, 252)
+position = Vector2(1152, 243)
 shape = SubResource("RectangleShape2D_u2xi3")
 
 [node name="GoalAreaGoal" type="Area2D" parent="." node_paths=PackedStringArray("window")]
@@ -186,8 +183,8 @@ script = ExtResource("8_y82gg")
 window = NodePath("../GoalWindow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalAreaGoal"]
-position = Vector2(1152, 252)
-shape = SubResource("RectangleShape2D_nyrgb")
+position = Vector2(1152, 243)
+shape = SubResource("RectangleShape2D_u2xi3")
 
 [connection signal="body_entered" from="GoalAreaMain" to="GoalAreaMain" method="triggered"]
 [connection signal="level_complete" from="GoalAreaMain" to="." method="level_complete"]

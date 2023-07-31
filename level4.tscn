@@ -55,8 +55,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 offsets = PackedFloat32Array(0, 0.333, 0.666, 1)
 colors = PackedColorArray(1, 0.25, 0.25, 1, 0.25, 1, 0.25, 1, 0.25, 0.25, 1, 1, 1, 0.25, 0.25, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgwgx"]
-size = Vector2(72, 72)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4qf2"]
+size = Vector2(72, 90)
 
 [node name="Level4" type="Node2D"]
 visibility_layer = 7
@@ -188,7 +188,7 @@ shape = SubResource("RectangleShape2D_gvklw")
 position = Vector2(42, 584)
 
 [node name="Confetti" type="CPUParticles2D" parent="."]
-position = Vector2(1188, 104)
+position = Vector2(1188, 87)
 emitting = false
 amount = 32
 one_shot = true
@@ -211,8 +211,8 @@ collision_mask = 2
 script = ExtResource("8_4dvd2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea"]
-position = Vector2(1188, 144)
-shape = SubResource("RectangleShape2D_tgwgx")
+position = Vector2(1188, 135)
+shape = SubResource("RectangleShape2D_w4qf2")
 
 [connection signal="body_entered" from="GoalArea" to="GoalArea" method="triggered"]
 [connection signal="level_complete" from="GoalArea" to="." method="level_complete"]
