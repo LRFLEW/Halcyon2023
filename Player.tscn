@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cagdfcj2kex1f"]
+[gd_scene load_steps=39 format=3 uid="uid://cagdfcj2kex1f"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_ood0y"]
 [ext_resource type="Texture2D" uid="uid://caf464ti4svny" path="res://TabbyIdle/frame_00001.png" id="3_iili2"]
@@ -25,10 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://hj7o8kuq8ijx" path="res://TabbyJump/frame_00015.png" id="11_pqv3q"]
 [ext_resource type="Texture2D" uid="uid://djph8kkjjsjou" path="res://TabbyJump/frame_00008.png" id="11_tndmx"]
 [ext_resource type="AudioStream" uid="uid://dltv4thd0fbu" path="res://footstep_concrete_000.ogg" id="15_n1bqn"]
+[ext_resource type="Texture2D" uid="uid://cw5a4hqm0ob3e" path="res://TabbyVictory/frame_00001.png" id="16_nm5re"]
 [ext_resource type="AudioStream" uid="uid://8p2k0ib7yl3i" path="res://footstep_concrete_001.ogg" id="16_ru2kh"]
 [ext_resource type="AudioStream" uid="uid://dfi6rybee2hum" path="res://footstep_concrete_002.ogg" id="17_25hoi"]
+[ext_resource type="Texture2D" uid="uid://dbm361tpyyyw7" path="res://TabbyVictory/frame_00002.png" id="17_eui2c"]
 [ext_resource type="AudioStream" uid="uid://bmvp2mdgckvbh" path="res://footstep_concrete_003.ogg" id="18_dh18h"]
+[ext_resource type="Texture2D" uid="uid://chexch2n8002s" path="res://TabbyVictory/frame_00004.png" id="18_lvsyo"]
+[ext_resource type="Texture2D" uid="uid://bmqo1x5m3x2lk" path="res://TabbyVictory/frame_00005.png" id="19_1hvqv"]
 [ext_resource type="AudioStream" uid="uid://by4bkmy0bjau4" path="res://footstep_concrete_004.ogg" id="19_l47ef"]
+[ext_resource type="Texture2D" uid="uid://ds3py00j1f6ow" path="res://TabbyVictory/frame_00006.png" id="20_34lpd"]
+[ext_resource type="Texture2D" uid="uid://3udbxy72jmx" path="res://TabbyVictory/frame_00008.png" id="21_vvdu8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3y22p"]
 animations = [{
@@ -36,7 +42,7 @@ animations = [{
 "duration": 4.0,
 "texture": ExtResource("3_iili2")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("6_1jk72")
 }, {
 "duration": 4.0,
@@ -107,6 +113,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_nm5re")
+}, {
+"duration": 2.0,
+"texture": ExtResource("17_eui2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lvsyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1hvqv")
+}, {
+"duration": 2.0,
+"texture": ExtResource("20_34lpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vvdu8")
+}],
+"loop": true,
+"name": &"Victory",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("4_43l35")
 }, {
 "duration": 1.0,
@@ -161,7 +190,8 @@ script = ExtResource("1_ood0y")
 visibility_layer = 4
 sprite_frames = SubResource("SpriteFrames_3y22p")
 animation = &"Idle"
-frame_progress = 0.095084
+autoplay = "Idle"
+frame_progress = 0.731615
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

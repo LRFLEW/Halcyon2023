@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byukghqwmy20h"
-path="res://.godot/imported/platformPack_tile064.png-ac241a0e7530beac1328b8e41950a55b.ctex"
+uid="uid://4wibn5giwk0m"
+path="res://.godot/imported/ButtonUp.png-a20e903ea2f88a73f9ed47b8f6383214.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platformPack_tile064.png"
-dest_files=["res://.godot/imported/platformPack_tile064.png-ac241a0e7530beac1328b8e41950a55b.ctex"]
+source_file="res://ButtonUp.png"
+dest_files=["res://.godot/imported/ButtonUp.png-a20e903ea2f88a73f9ed47b8f6383214.ctex"]
 
 [params]
 

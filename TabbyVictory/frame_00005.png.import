@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mt5b2qp7lle"
-path="res://.godot/imported/platformPack_tile065.png-4f50ad30a3e2dbcda47df2d7eb2cb4be.ctex"
+uid="uid://bmqo1x5m3x2lk"
+path="res://.godot/imported/frame_00005.png-0e1563045d539f866af06d6ba84dbb26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platformPack_tile065.png"
-dest_files=["res://.godot/imported/platformPack_tile065.png-4f50ad30a3e2dbcda47df2d7eb2cb4be.ctex"]
+source_file="res://TabbyVictory/frame_00005.png"
+dest_files=["res://.godot/imported/frame_00005.png-0e1563045d539f866af06d6ba84dbb26.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://28oppi20cfjc"
-path="res://.godot/imported/platformChar_idle.png-77a448487b6a429da65d576e90393330.ctex"
+uid="uid://ds3py00j1f6ow"
+path="res://.godot/imported/frame_00006.png-a9e636f3079b91a203b63c589f6a347f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://platformChar_idle.png"
-dest_files=["res://.godot/imported/platformChar_idle.png-77a448487b6a429da65d576e90393330.ctex"]
+source_file="res://TabbyVictory/frame_00006.png"
+dest_files=["res://.godot/imported/frame_00006.png-a9e636f3079b91a203b63c589f6a347f.ctex"]
 
 [params]
 

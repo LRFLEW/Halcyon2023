@@ -1,7 +1,5 @@
 extends Area2D
 
-class_name Goal
-
 signal level_complete
 
 @export var window : Window

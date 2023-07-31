@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://Main.gd" id="1_v41gg"]
 [ext_resource type="Script" path="res://CropCollision.gd" id="3_4jr6d"]
 [ext_resource type="TileSet" uid="uid://codqxp3pqyrh8" path="res://LevelTileset.tres" id="3_4kt5i"]
-[ext_resource type="Texture2D" uid="uid://byukghqwmy20h" path="res://platformPack_tile064.png" id="3_du6rs"]
 [ext_resource type="Script" path="res://ToggleWall.gd" id="4_csvuv"]
 [ext_resource type="Script" path="res://Button.gd" id="5_lb8hk"]
 [ext_resource type="Script" path="res://EntityWindow.gd" id="5_m7r4a"]
-[ext_resource type="Texture2D" uid="uid://b7mt5b2qp7lle" path="res://platformPack_tile065.png" id="6_mkain"]
+[ext_resource type="Texture2D" uid="uid://iwgl1axqd5r0" path="res://ButtonDown.png" id="6_m7g24"]
+[ext_resource type="Texture2D" uid="uid://4wibn5giwk0m" path="res://ButtonUp.png" id="7_2jvoe"]
 [ext_resource type="Texture2D" uid="uid://bepdq6muljl4k" path="res://Box.png" id="8_eok6k"]
 [ext_resource type="AudioStream" uid="uid://18kxn06rbasx" path="res://switch7.ogg" id="9_80urc"]
 [ext_resource type="PackedScene" uid="uid://cagdfcj2kex1f" path="res://Player.tscn" id="10_s4n6h"]
@@ -30,7 +30,7 @@ size = Vector2(180, 576)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_mkain")
+"texture": ExtResource("6_m7g24")
 }],
 "loop": true,
 "name": &"Pressed",
@@ -38,15 +38,15 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_du6rs")
+"texture": ExtResource("7_2jvoe")
 }],
 "loop": true,
 "name": &"Unpressed",
-"speed": 5.0
+"speed": 0.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8yhe"]
-size = Vector2(56, 32)
+size = Vector2(58, 28)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivpw0"]
 friction = 5.0
@@ -205,9 +205,10 @@ script = ExtResource("5_lb8hk")
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_co7mr")
 animation = &"Unpressed"
+autoplay = "Unpressed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
-position = Vector2(0, -16)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_u8yhe")
 
 [node name="PressSound" type="AudioStreamPlayer" parent="Button"]

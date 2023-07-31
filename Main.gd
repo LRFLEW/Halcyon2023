@@ -14,6 +14,7 @@ var completed := false
 var timer := 0.0
 
 @onready var camera : Camera2D = $Camera2D
+@onready var player : Player = $Player
 @onready var confetti : CPUParticles2D = $Confetti
 @onready var winsound : AudioStreamPlayer = $WinSound
 
@@ -23,7 +24,7 @@ func _ready():
 	var screen := Rect2i(
 		DisplayServer.screen_get_position(Menu.game_display),
 		DisplayServer.screen_get_size(Menu.game_display))
-	var root := screen.get_center() - Vector2i(1280 / 2, 720 / 2)
+	var root := screen.get_center() - Vector2i(640, 360)
 	
 	screen_origin = root
 	win.position = root + start_pos
@@ -32,7 +33,7 @@ func _ready():
 	win.canvas_cull_mask = 1
 	win.title = ""
 
-func _process(delta):
+func _process(_delta):
 	if get_window().mode != Window.MODE_WINDOWED:
 		get_window().mode = Window.MODE_WINDOWED
 	var newpos : Vector2 = get_window().position
@@ -52,5 +53,6 @@ func _input(event):
 func level_complete():
 	if !completed:
 		completed = true
+		player.on_victory()
 		confetti.restart()
 		winsound.play()
