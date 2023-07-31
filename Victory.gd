@@ -8,6 +8,8 @@ const screen_pad := 200.0
 var title : String = ProjectSettings.get_setting("application/config/name")
 
 @onready var overfx : AudioStreamPlayer = $OverFX
+@onready var music_bus := AudioServer.get_bus_index("Music")
+@onready var sfx_bus := AudioServer.get_bus_index("SFX")
 @onready var winbox : StaticBody2D = $WindowBox
 @onready var scrnbox : StaticBody2D = $ScreenBox
 
@@ -24,6 +26,10 @@ func _ready():
 	win.unresizable = true
 	win.canvas_cull_mask = 1
 	win.title = title
+	MusicPlayer.switch_track(MusicPlayer.Tracks.Victory)
+	
+	$MusicSlider.value = AudioServer.get_bus_volume_db(music_bus)
+	$SFXSlider.value = AudioServer.get_bus_volume_db(sfx_bus)
 	
 	var boxid := winbox.get_shape_owners()[0]
 	var boxshape := winbox.shape_owner_get_shape(boxid, 0)
@@ -69,6 +75,14 @@ func _input(event):
 
 func on_mouse_over():
 	overfx.play()
+
+func change_music_volume(value : float):
+	AudioServer.set_bus_volume_db(music_bus, value)
+	AudioServer.set_bus_mute(music_bus, value <= -30.0)
+
+func change_sfx_volume(value : float):
+	AudioServer.set_bus_volume_db(sfx_bus, value)
+	AudioServer.set_bus_mute(sfx_bus, value <= -30.0)
 
 func menu():
 	get_tree().change_scene_to_file(menu_scene)

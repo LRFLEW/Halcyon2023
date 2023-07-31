@@ -191,7 +191,7 @@ visibility_layer = 4
 sprite_frames = SubResource("SpriteFrames_3y22p")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.731615
+frame_progress = 0.0992562
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -218,6 +218,7 @@ anchor_mode = 0
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vgka2")
-volume_db = -2.0
+volume_db = 3.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="animation_next"]

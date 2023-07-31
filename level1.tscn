@@ -213,11 +213,11 @@ shape = SubResource("RectangleShape2D_u8yhe")
 
 [node name="PressSound" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource("13_odctu")
-volume_db = -3.0
+bus = &"SFX"
 
 [node name="DepressSound" type="AudioStreamPlayer" parent="Button"]
 stream = ExtResource("9_80urc")
-volume_db = -3.0
+bus = &"SFX"
 
 [node name="Box" type="RigidBody2D" parent="."]
 visibility_layer = 2
@@ -272,6 +272,7 @@ color_initial_ramp = SubResource("Gradient_627en")
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_fatax")
+bus = &"SFX"
 
 [node name="GoalArea" type="Area2D" parent="."]
 collision_layer = 2

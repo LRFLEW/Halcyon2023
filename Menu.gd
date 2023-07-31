@@ -12,6 +12,8 @@ const screen_size := Vector2i(1280, 720)
 var title : String = ProjectSettings.get_setting("application/config/name")
 
 @onready var overfx : AudioStreamPlayer = $OverFX
+@onready var music_bus := AudioServer.get_bus_index("Music")
+@onready var sfx_bus := AudioServer.get_bus_index("SFX")
 
 func _ready():
 	var win := get_window()
@@ -23,6 +25,10 @@ func _ready():
 	win.unresizable = true
 	win.canvas_cull_mask = 1
 	win.title = title
+	MusicPlayer.switch_track(MusicPlayer.Tracks.Menu)
+	
+	$MusicSlider.value = AudioServer.get_bus_volume_db(music_bus)
+	$SFXSlider.value = AudioServer.get_bus_volume_db(sfx_bus)
 
 func _input(event):
 	if event.is_action_pressed("Restart"):
@@ -30,6 +36,14 @@ func _input(event):
 
 func on_mouse_over():
 	overfx.play()
+
+func change_music_volume(value : float):
+	AudioServer.set_bus_volume_db(music_bus, value)
+	AudioServer.set_bus_mute(music_bus, value <= -30.0)
+
+func change_sfx_volume(value : float):
+	AudioServer.set_bus_volume_db(sfx_bus, value)
+	AudioServer.set_bus_mute(sfx_bus, value <= -30.0)
 
 func play():
 	game_display = DisplayServer.window_get_current_screen(get_window().get_window_id())

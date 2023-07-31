@@ -32,6 +32,7 @@ func _ready():
 	win.unresizable = unresizable
 	win.canvas_cull_mask = 1
 	win.title = ""
+	MusicPlayer.switch_track(MusicPlayer.Tracks.Stage)
 
 func _process(_delta):
 	if get_window().mode != Window.MODE_WINDOWED:

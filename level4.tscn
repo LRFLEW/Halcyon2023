@@ -204,6 +204,7 @@ color_initial_ramp = SubResource("Gradient_lfh8r")
 
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y2y2i")
+bus = &"SFX"
 
 [node name="GoalArea" type="Area2D" parent="."]
 collision_layer = 2
