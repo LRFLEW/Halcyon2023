@@ -41,7 +41,7 @@ theme_override_fonts/font = ExtResource("3_dhagq")
 theme_override_font_sizes/font_size = 96
 text = "Quit"
 
-[node name="Label" type="Label" parent="."]
+[node name="Credits" type="Label" parent="."]
 offset_left = 16.0
 offset_top = 670.0
 offset_right = 1264.0
